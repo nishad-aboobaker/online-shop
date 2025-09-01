@@ -41,31 +41,28 @@
                   var converted = capitalizeFirstLetter(input);
                   //string convertion ended
                   
-                data.products.filter((dt)=>{
-                    if(dt.brand.startsWith(converted)){
-                    s+=
-
-                    `<div class="col-lg-3">
-        <div class="product-card">
-          <img src="${dt.thumbnail}" alt="Product Image" />
-          <h2 class="product-title">${dt.title}</h2>
-          <p class="product-description">
-            ${dt.description}
-          </p>
-          <p class="product-price">$${dt.price}</p>
-          <p class="product-stock">Remaining Stock:${dt.stock}</p>
-          <p class="product-rating">Rating:${dt.rating}</p>
-          <!-- Numeric value for rating -->
-          <p class="product-discount">Discount:${dt.discountPercentage}%</p>
-          <div class="button-container">
-            <button class="add-to-cart">Buy now</button>
-            <button class="buy-now"><a href="./Details.html?id=${dt.id}">Details</a></button>
-          </div>
-        </div>
-    </div>`
-
-        }
-                })
+                data.products.filter((dt) => {
+    if (dt.brand && dt.brand.startsWith(converted)) {
+        s += `
+        <div class="col-lg-3">
+            <div class="product-card">
+                <img src="${dt.thumbnail}" alt="Product Image" />
+                <h2 class="product-title">${dt.title}</h2>
+                <p class="product-description">${dt.description}</p>
+                <p class="product-price">$${dt.price}</p>
+                <p class="product-stock">Remaining Stock: ${dt.stock}</p>
+                <p class="product-rating">Rating: ${dt.rating}</p>
+                <p class="product-discount">Discount: ${dt.discountPercentage}%</p>
+                <div class="button-container">
+                    <button class="add-to-cart">Buy now</button>
+                    <button class="buy-now">
+                        <a href="./Details.html?id=${dt.id}">Details</a>
+                    </button>
+                </div>
+            </div>
+        </div>`;
+    }
+});
                 document.getElementById("main").innerHTML=s
             
                 
